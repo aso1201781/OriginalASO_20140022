@@ -24,7 +24,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -32,13 +32,13 @@
         android:text="戻る" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/deleate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn1"
-        android:layout_alignBottom="@+id/btn1"
+        android:layout_alignBaseline="@+id/back"
+        android:layout_alignBottom="@+id/back"
         android:layout_marginLeft="28dp"
-        android:layout_toRightOf="@+id/btn1"
+        android:layout_toRightOf="@+id/back"
         android:text="削除" />
 
 </RelativeLayout>

@@ -1,8 +1,9 @@
 package jp.acstasojukuoriginal20140022;
 
+import android.app.Activity;
 import android.os.Bundle;
 
-public class Tourokuhyouji extends MainActivity{
+public class Tourokuhyouji extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
