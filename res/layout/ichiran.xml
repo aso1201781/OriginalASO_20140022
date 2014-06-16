@@ -15,7 +15,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/lst1"
             android:layout_width="218dp"
             android:layout_height="232dp" >
 

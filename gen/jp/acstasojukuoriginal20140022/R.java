@@ -32,7 +32,7 @@ public final class R {
         public static final int edttxt1=0x7f080002;
         public static final int imageView1=0x7f08000a;
         public static final int linearLayout1=0x7f080006;
-        public static final int listView1=0x7f080007;
+        public static final int lst1=0x7f080007;
         public static final int mente=0x7f080003;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
