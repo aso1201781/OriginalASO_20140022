@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 public class Ichiran extends Activity  implements
 View.OnClickListener,AdapterView.OnItemClickListener
 {
@@ -66,7 +67,16 @@ View.OnClickListener,AdapterView.OnItemClickListener
 		lstHitokoto.setAdapter(adapter);
 	}
 		
-		
+	public void deleteFromHitokoto(int id){
+		if(sdb == null){
+				helper = new MySQLiteOpenHelper(getApplicationContext());
+		}try{
+			sdb = helper.getWritableDatabase();
+		}catch(SQLiteException e){
+			Log.e("ERROR", e.toString());
+		}
+		this.helper.deleteHItokoto(sdb,id);
+	}
 	
 	
 	
@@ -77,19 +87,43 @@ View.OnClickListener,AdapterView.OnItemClickListener
 		// TODO 自動生成されたメソッド・スタブ
 		Intent intent = null;
 		switch(v.getId()){
+		case R.id.deleate:
+			if(this.selectedID != -1){
+				this.deleteFromHitokoto(this.selectedID);
+				ListView lstHitokoto = (ListView)findViewById(R.id.lst1);
+				this.setDBValuetoList(lstHitokoto);
+				this.selectedID = -1;
+				this.lastPosition = -1;
+			}
+			else{
+				Toast.makeText(Ichiran.this,"削除する行を選んでください",Toast.LENGTH_SHORT).show();
+			}
+			break;
 			case R.id.back:
-				intent = new Intent(Ichiran.this, MainActivity.class);
-				startActivity(intent);
+				finish();
+				//intent = new Intent(Ichiran.this, MainActivity.class);
+				//startActivity(intent);
 				break;
-			case R.id.deleate:
 			
-				break;
 	   }
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		// TODO 自動生成されたメソッド・スタブ
+		if(this.selectedID!=-1){
+			parent.getChildAt(this.lastPosition).setBackgroundColor(0);
+		}
+		
+		view.setBackgroundColor(android.graphics.Color.LTGRAY);
+		
+		SQLiteCursor cursor = (SQLiteCursor)parent.getItemAtPosition(position);
+		this.selectedID = cursor.getInt(cursor.getColumnIndex("_id"));
+		this.lastPosition = position;
+		
+			
+		}
+		
 		
 	}
-}
+
